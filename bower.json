@@ -1,0 +1,24 @@
+{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-loader": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "html5-boilerplate": "~5.2.0",
+    "angular-bootstrap-colorpicker": "~3.0.18",
+    "bootstrap": "~3.3.5",
+    "angular-json-pretty-print": "~0.1.0",
+    "angular-sanitize": "~1.4.4",
+    "json-formatter": "~0.3.1",
+    "ng-flow": "~2",
+    "bootstrap-ui-datetime-picker": "~1.1.6",
+    "angular-ui": "~0.4.0",
+    "angular-bootstrap": "~0.13.3"
+  }
+}

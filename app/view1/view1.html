@@ -1,0 +1,358 @@
+<div>
+<div class="col-sm-8">
+    <form class="form-horizontal" name="pkpass" role="form">
+
+        <h2>Style Keys</h2>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">passstyle:</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="passstyle">
+                    <option value="boardingPass">Boarding pass</option>
+                    <option value="coupon">Coupon</option>
+                    <option value="eventTicket">Event ticket</option>
+                    <option value="generic">Generic</option>
+                    <option value="storeCard">Store card</option>
+                </select>
+            </div>
+        </div>
+
+
+        <h2>Standard Keys</h2>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">formatVersion:</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" ng-model="passbook.formatVersion" placeholder="1" ng-disabled="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">serialNumber:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.serialNumber" placeholder="serialNumber">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">passType Identifier:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.passTypeIdentifier" placeholder="passTypeIdentifier">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">teamIdentifier:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.teamIdentifier" placeholder="teamIdentifier">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">description:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.description" placeholder="description">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">organization Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.organizationName" placeholder="organizationName" required>
+            </div>
+        </div>
+
+        <h2>Associated App Keys</h2>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">appLaunchURL:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.appLaunchURL" placeholder="appLaunchURL">
+            </div>
+        </div>
+
+
+        <h2>Expiration Keys</h2>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">expirationDate:</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text" class="form-control" datetime-picker="yyyy-MM-dd HH:mm" ng-model="passbook.expirationDate" is-open="open.expirationDate" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'expirationDate')"><i class="fa fa-calendar"></i></button>
+                </span>
+                </p>
+                <!--
+                <input type="text" class="form-control" ng-model="passbook.expirationDate" placeholder="expirationDate">
+                -->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">voided:</label>
+            <div class="col-sm-10">
+                <input type="checkbox" style="margin-right: 10px;" ng-model="passbook.voided" placeholder="value">voided</label>
+            </div>
+        </div>
+
+        <h2>Relevance Keys</h2>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">beacons:</label>
+            <div class="col-sm-10">
+                <div ng-repeat="beacon in passbook.beacons">
+                    <input type="text" class="form-control" ng-model="beacon.major" placeholder="major">
+                    <br>
+                    <input type="text" class="form-control" ng-model="beacon.minor" placeholder="minor">
+                    <br>
+                    <input type="text" class="form-control" ng-model="beacon.proximityUUID" placeholder="proximityUUID">
+                    <br>
+                    <input type="text" class="form-control" ng-model="beacon.relevantText" placeholder="relevantText">
+                    <br>
+                    <button type="button" class="btn btn-danger" ng-click="deleteField(passbook.beacons, beacon, 'beacons')">Delete</button>
+                    <hr>
+                </div>
+
+                <br>
+                <button type="button" class="btn btn-primary" ng-click="addField(passbook.beacons, 'beacons')">Add</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">locations:</label>
+            <div class="col-sm-10">
+                <div ng-repeat="location in passbook.locations">
+                    <input type="number" class="form-control" ng-model="location.altitude" placeholder="altitude">
+                    <br>
+                    <input type="number" class="form-control" ng-model="location.latitude" placeholder="latitude" required>
+                    <br>
+                    <input type="number" class="form-control" ng-model="location.longitude" placeholder="longitude" required>
+                    <br>
+                    <input type="text" class="form-control" ng-model="location.relevantText" placeholder="relevantText">
+                    <br>
+                    <button type="button" class="btn btn-danger" ng-click="deleteField(passbook.locations, location, 'locations')">Delete</button>
+                    <hr>
+                </div>
+
+                <br>
+                <button type="button" class="btn btn-primary" ng-click="addField(passbook.locations, 'locations')">Add</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">maxDistance:</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" ng-model="passbook.maxDistance" placeholder="maxDistance">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">relevantDate:</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text" class="form-control" datetime-picker="yyyy-MM-dd HH:mm" ng-model="passbook.relevantDate" is-open="open.relevantDate" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'relevantDate')"><i class="fa fa-calendar"></i></button>
+                </span>
+                    <!--
+                <input type="text" class="form-control" ng-model="passbook.relevantDate" placeholder="relevantDate">
+                -->
+            </div>
+        </div>
+
+
+        <h2>Visual Appearance Keys</h2>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">barcode message:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.barcode.message" placeholder="message" required>
+                <br>
+                <input type="text" class="form-control" ng-model="passbook.barcode.altText" placeholder="altText">
+                <br>
+                <select class="form-control" ng-model="passbook.barcode.format">
+                    <option selected>PKBarcodeFormatQR</option>
+                    <option>PKBarcodeFormatPDF417</option>
+                    <option>PKBarcodeFormatAztec</option>
+                </select>
+                <br>
+                <input type="text" class="form-control" ng-model="passbook.barcode.messageEncoding" placeholder="iso-8859-1" ng-disabled="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">foregroundColor:</label>
+            <div class="col-sm-10">
+                <input colorpicker="rgb" type="text" ng-model="passbook.foregroundColor" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">backgroundColor:</label>
+            <div class="col-sm-10">
+                <input colorpicker="rgb" type="text" ng-model="passbook.backgroundColor" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">labelColor:</label>
+            <div class="col-sm-10">
+                <input colorpicker="rgb" type="text" ng-model="passbook.labelColor" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">logoText:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.logoText" placeholder="logoText">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">suppress StripShine:</label>
+            <div class="col-sm-10">
+                <input type="checkbox" style="margin-right: 10px;" ng-model="passbook.suppressStripShine">suppressStripShine</label>
+            </div>
+        </div>
+
+
+
+        <h2>Web Service Keys</h2>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">authenticationToken:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.authenticationToken" placeholder="authenticationToken">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">webServiceURL:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="passbook.webServiceURL" placeholder="webServiceURL">
+            </div>
+        </div>
+
+
+
+        <h2>Pass Structure Dictionary Keys</h2>
+        <div ng-show="passstyle">
+
+            <div class="form-group" ng-show="passbook.passstyle=='boardingPass'">
+                <label class="control-label col-sm-2" for="email">transitType:</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="transitType">
+                        <option selected>PKTransitTypeAir</option>
+                        <option>PKTransitTypeBoat</option>
+                        <option>PKTransitTypeBus</option>
+                        <option>PKTransitTypeGeneric</option>
+                        <option>PKTransitTypeTrain</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <hr>
+                <label class="control-label col-sm-2" for="email">primaryFields:</label>
+                <div class="col-sm-10">
+                    <div ng-repeat="field in getPrimaryFields()">
+                        <pk-field-directory field="field" field-array="getPrimaryFields()" index="$index"></pk-field-directory>
+                    </div>
+                    <br>
+
+                    <button type="button" class="btn btn-primary" ng-click="addField(getPrimaryFields())">Add</button>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <hr>
+                <label class="control-label col-sm-2" for="email">secondaryFields:</label>
+                <div class="col-sm-10">
+                    <div ng-repeat="field in getSecondaryFields()">
+                        <pk-field-directory field="field" field-array="getSecondaryFields()" index="$index"></pk-field-directory>
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-primary" ng-click="addField(getSecondaryFields())">Add</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <hr>
+                <label class="control-label col-sm-2" for="email">auxiliaryFields:</label>
+                <div class="col-sm-10">
+                    <div ng-repeat="field in getAuxiliaryFields()">
+                        <pk-field-directory field="field" field-array="getAuxiliaryFields()" index="$index"></pk-field-directory>
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-primary" ng-click="addField(getAuxiliaryFields())">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Upload Images</h2>
+
+        <div class="form-group" ng-repeat="image in images">
+            <hr>
+            <label class="control-label col-sm-2" for="email">{{image}}:</label>
+            <div class="col-sm-10">
+                <div flow-init="{singleFile:true}"
+                     flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                    <div class="thumbnail" ng-show="!$flow.files.length">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+                    </div>
+                    <div class="thumbnail" ng-show="$flow.files.length">
+                        <img flow-img="$flow.files[0]" />
+                    </div>
+                    <div>
+                        <span class="btn btn-primary" ng-show="!$flow.files.length" flow-btn>Select image</span>
+                        <span class="btn btn-info" ng-show="$flow.files.length" flow-btn>Change</span>
+  <span class="btn btn-danger" ng-show="$flow.files.length"
+        ng-click="$flow.cancel()">
+    Remove
+  </span>
+                    </div>
+                    <p>
+                        Only PNG,GIF,JPG,JEPG files allowed.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <hr>
+            <label class="control-label col-sm-2" for="email">Email:</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Password:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-sm-4">
+    <h1>pkpass json</h1>
+<!--
+    <rm-json-pretty-print json="{{getPKPassJson(passbook)}}">
+    </rm-json-pretty-print>
+-->
+    <json-formatter open="1" json="passbook"></json-formatter>
+</div>
+</div>

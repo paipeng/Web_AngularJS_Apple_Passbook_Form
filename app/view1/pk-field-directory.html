@@ -1,0 +1,73 @@
+
+
+<input type="text" class="form-control" ng-model="field.attributedValue" placeholder="attributedValue"/>
+<br>
+<input type="text" class="form-control" ng-model="field.changeMessage" placeholder="changeMessage"/>
+<br>
+
+<select class="form-control" ng-model="field.dataDetectorTypes">
+    <option value="" disabled selected>dataDetectorTypes</option>
+    <option selected>PKDataDetectorTypePhoneNumber</option>
+    <option>PKDataDetectorTypeLink</option>
+    <option>PKDataDetectorTypeAddress</option>
+    <option>PKDataDetectorTypeCalendarEvent</option>
+</select>
+<br>
+<input type="text" class="form-control" ng-model="field.key" placeholder="key"/>
+<br>
+<input type="text" class="form-control" ng-model="field.label" placeholder="label"/>
+<br>
+
+<input type="text" class="form-control" ng-model="field.value" placeholder="value"/>
+<br>
+
+
+<select class="form-control" ng-model="field.textAlignment">
+    <option value="" disabled selected>textAlignment</option>
+    <option>PKTextAlignmentNatural</option>
+    <option>PKTextAlignmentLeft</option>
+    <option>PKTextAlignmentCenter</option>
+    <option>PKTextAlignmentRight</option>
+</select>
+<br>
+<input type="checkbox" style="margin-right: 10px;" ng-model="field.isRelative" placeholder="value">isRelative</label>
+<br><br>
+<input type="checkbox" style="margin-right: 10px;" ng-model="field.ignoresTimeZone" placeholder="value">ignoresTimeZone</label>
+<br>
+<br>
+<select class="form-control" ng-model="field.dateStyle">
+    <option value="" disabled selected>dateStyle</option>
+    <option value="PKDateStyleNone">PKDateStyleNone</option>
+    <option value="PKDateStyleShort">PKDateStyleShort</option>
+    <option value="PKDateStyleMedium">PKDateStyleMedium</option>
+    <option value="PKDateStyleLong">PKDateStyleLong</option>
+    <option value="PKDateStyleFull">PKDateStyleFull</option>
+</select>
+<br>
+
+<select class="form-control" ng-model="field.timeStyle">
+    <option value="" disabled selected>timeStyle</option>
+    <option value="PKDateStyleNone">PKDateStyleNone</option>
+    <option value="PKDateStyleShort">PKDateStyleShort</option>
+    <option value="PKDateStyleMedium">PKDateStyleMedium</option>
+    <option value="PKDateStyleLong">PKDateStyleLong</option>
+    <option value="PKDateStyleFull">PKDateStyleFull</option>
+</select>
+<br>
+<input type="text" class="form-control" ng-model="field.currencyCode" placeholder="currencyCode"/>
+
+<br>
+
+<select class="form-control" ng-model="field.numberStyle">
+    <option value="" disabled selected>numberStyle</option>
+    <option value="PKNumberStyleDecimal">PKNumberStyleDecimal</option>
+    <option value="PKNumberStylePercent">PKNumberStylePercent</option>
+    <option value="PKNumberStyleScientific">PKNumberStyleScientific</option>
+    <option value="PKNumberStyleSpellOut">PKNumberStyleSpellOut</option>
+</select>
+
+
+
+<br>
+<button type="button" class="btn btn-danger" ng-click="deleteField(fieldArray, field)">Delete</button>
+<hr>
